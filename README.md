@@ -1,2 +1,4 @@
-# StudyGolang
-go 训练营
+# Go 进阶训练营作业
+
+- [第二周作业](./week2)
+
