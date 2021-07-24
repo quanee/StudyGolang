@@ -1,15 +1,15 @@
-### 1. 总结几种 socket 粘包的解包方式: fix length/delimiter based/length field based frame decoder。尝试举例其应用
+## 1. 总结几种 socket 粘包的解包方式: fix length/delimiter based/length field based frame decoder。尝试举例其应用
 
-- #### fix length
+- ### fix length
 	发送方每次发送不超过缓冲区大小的固定长度的数据, 接受方按固定长度区接受数据
 
-- #### delimiter based
+- ### delimiter based
 	发送方在数据包中添加特定的分隔符用来标记数据包边界
 
-- #### length field based
+- ### length field based
 	发送方在消息数据包头添加包长度信息
 
-### 2. 实现一个从 socket connection 中解码出 goim 协议的解码器。
+## 2. 实现一个从 socket connection 中解码出 goim 协议的解码器。
 
 
 ```golang
