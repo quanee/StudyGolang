@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+package summary;
+
+option go_package = "blog/api/summary/v1;summary";
+
+service SummaryService {
+  rpc CreateSummary (CreateSummaryRequest) returns (CreateSummaryReply) {
+    option (google.api.http) = {
+      post: "/v1/summary/"
+      body: "*"
+    };
+  }
+  rpc UpdateSummary (UpdateSummaryRequest) returns (UpdateSummaryReply) {
+    option (google.api.http) = {
+      put: "/v1/summary/{id}"
+      body: "*"
+    };
+  }
+  rpc DeleteSummary (DeleteSummaryRequest) returns (DeleteSummaryReply) {
+    option (google.api.http) = {
+      delete: "/v1/summary/{id}"
+    };
+  }
+  rpc GetSummary (GetSummaryRequest) returns (GetSummaryReply) {
+    option (google.api.http) = {
+      get: "/v1/summary/{id}"
+    };
+  }
+  rpc ListSummary (ListSummaryRequest) returns (ListSummaryReply) {
+    option (google.api.http) = {
+      get: "/v1/list_summary?s={start_id}&l={limit}"
+    };
+  }
+}
+
+message Summary {
+  int64 id = 1;
+  string title = 2;
+}
+
+message CreateSummaryRequest {
+  string title = 1;
+}
+message CreateSummaryReply {
+  Summary summary = 1;
+}
+
+message UpdateSummaryRequest {
+  int64 id = 1;
+  string title = 2;
+}
+message UpdateSummaryReply {
+  int64 id = 1;
+}
+
+message DeleteSummaryRequest {
+  int64 id = 1;
+}
+message DeleteSummaryReply {
+  int64 id = 1;
+}
+
+message GetSummaryRequest {
+  int64 id = 1;
+}
+message GetSummaryReply {
+  Summary summary = 1;
+}
+
+message ListSummaryRequest {
+  int64 start_id = 1;
+  int64 limit = 2;
+}
+message ListSummaryReply {
+  repeated Summary summaries = 1;
+}
