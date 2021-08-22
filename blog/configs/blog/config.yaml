@@ -1,0 +1,23 @@
+server:
+  http:
+    addr: 0.0.0.0:8001
+    timeout: 1s
+  grpc:
+    addr: 0.0.0.0:9001
+    timeout: 1s
+data:
+  database:
+    driver: sqlite3
+    source: ../blog.db?mode=memory&cache=shared&_fk=1
+cache:
+  connect:
+    driver: redis
+    source: redis://127.0.0.1:6379
+    size: 2
+mq:
+  connect:
+    driver: 0.11.0.3
+    source: 127.0.0.1:9092
+    size: 2
+    topic: blog
+    group: test
