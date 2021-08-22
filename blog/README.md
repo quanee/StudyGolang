@@ -24,6 +24,7 @@
 - 查询博客时, `blog` 调用 `summary` 和 `article` 拼接成完整内容, 返回
 - 查询摘要时, 先查询 Redis, 没有则到 Sqlite 查, 并将查到的内容发送到 Kafka, 进行缓存
 - 摘要缓存更新任务, 消费 Kafka 中的消息, 并缓存到 Redis
+- 使用 jaeger 作为中间件进行链路追踪
 
 ### 运行
 
